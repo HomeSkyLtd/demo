@@ -1,0 +1,23 @@
+{
+    "commandType": [
+        {
+            "id": 1,
+            "type": "bool",
+            "range": [0, 1],
+            "unit": "",
+            "commandCategory": "fan",
+            "output": {
+                "gpio": 14,
+                "invert": 1,
+                "initial": 1
+            }
+        }
+    ],
+    "networkInterface": {
+        "type": "tcp",
+        "params": {
+            "rport": 2357,
+            "broadcast_port": 2356
+        }
+    }
+}
