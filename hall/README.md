@@ -1,4 +1,4 @@
-h#Hall
+#Hall
 
 This tutorial shows how to assemble the following elements:
 
