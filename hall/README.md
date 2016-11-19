@@ -38,7 +38,19 @@ To run the code, use the following command:
 sudo node nodepi fan.json
 ```
 
+### Temperature and humidity sensor
+The figure below shows the schematic for the hall's temperature/humidity sensor.
+
+![alt text](https://github.com/HomeSkyLtd/demo/blob/master/hall/images/dht22.png "Schematics for hall's temperature/humidity sensor")
+
+To run the code, use the following command:
+37
+``` bash
+38
+sudo node temperature_humidity
+39
+```
 
 ### Info about devices used in this tutorial
 * The relay board shown in the schematic consist of four relays protected by opto-isolators. You can find them easily on [Mercado Livre](http://produto.mercadolivre.com.br/MLB-791089935-placa-4-reles-optoacoplados-arduino-pic-controle-automaco-_JM).
- 
+* The temperature/humidity sensor's model is DHT22/AM2302. More information can be found [here](https://cdn-shop.adafruit.com/datasheets/Digital+humidity+and+temperature+sensor+AM2302.pdf)
