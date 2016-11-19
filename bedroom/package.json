@@ -1,0 +1,14 @@
+{
+  "name": "bedroom",
+  "version": "1.0.0",
+  "description": "This room contains 2 sensors: - Presence sensor - Light sensor And 1 actuator: - LED -",
+  "main": "tv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lcd": "^1.1.4"
+  }
+}
