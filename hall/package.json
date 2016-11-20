@@ -1,5 +1,5 @@
 {
-  "name": "rainfall-raspberry",
+  "name": "demo-hall",
   "version": "1.0.0",
   "description": "Sensor/Actuator implementation using a raspberry pi",
   "main": "index.js",
@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "lcdi2c": "^1.0.6",
+    "node-dht-sensor": "0.0.32",
     "rainfall-leaf": "*",
     "rainfall-tcp": "*",
     "rainfall-udp": "*",
