@@ -7,6 +7,8 @@ This tutorial shows how to assemble the following elements:
 3. A fan (simulated by a computer fan)
 4. A temperature and humidity sensor, with an LCD display showing the readings
 
+First of all, make sure you have Node.js and NPM installed. Install the dependencies of the project with `npm install`.
+
 The pinout used on the diagrams are for the Raspberry Pi B+. It should be equivalent for the Pi 2 and Pi 3.
 
 ### Lamp
