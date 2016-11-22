@@ -13,14 +13,13 @@ const LCD_LINES = 2;
 var initDisplay = function() {
     var lcd = new LCD(I2C_BUS, I2C_ADDRESS, LCD_COLUMNS, LCD_LINES);
     lcd.clear();
-    lcd.off();
     return lcd;
 };
 
 var updateDisplay = function(lcd, state) {
     lcd.clear();
-    lcd.println("Temperature: " + state.temperature, 1);
-    lcd.println("Humidity: " + state.humidity, 2);
+    lcd.println("Temp: " + state.temperature + " C", 1);
+    lcd.println("Humidity: " + state.humidity + "%", 2);
 };
 
 var lcd = initDisplay();
