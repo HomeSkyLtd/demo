@@ -55,7 +55,11 @@ Driver.createDriver({}, function(err, driver) {
                 else {
                     var read = function() {
                         DHT_sensor.read(22, 5, function(err, temperature, humidity) {
-                            if (err) console.log(err);
+                            if (err) {
+                                console.log(err);
+                                setTimeout(read, 3000);
+                            }
+
                             else {
                                 console.log('temp: ' + temperature.toFixed(1) + '°C, ' +
                                     'humidity: ' + humidity.toFixed(1) + '%');
