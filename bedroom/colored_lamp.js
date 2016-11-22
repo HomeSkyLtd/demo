@@ -28,9 +28,9 @@ Driver.createDriver({}, function(err, driver) {
 					if (err) throw err;
 					else {
 						wpi.setup('gpio');
-                    					wpi.pinMode(RED_PIN, wpi.OUTPUT);
-                    					wpi.pinMode(GREEN_PIN, wpi.OUTPUT);
-                    					wpi.pinMode(BLUE_PIN, wpi.OUTPUT);
+						wpi.pinMode(RED_PIN, wpi.OUTPUT);
+						wpi.pinMode(GREEN_PIN, wpi.OUTPUT);
+						wpi.pinMode(BLUE_PIN, wpi.OUTPUT);
 
 						leaf.listenCommand(function(obj) {
 							onCommand(obj.command[0].value);
@@ -50,8 +50,10 @@ Driver.createDriver({}, function(err, driver) {
 
 var onCommand = function(value) {
 	var bit_0 = value & 1;
-	var bit_1 = value & 2 >> 1;
-	var bit_2 = value & 4 >> 2;
+	var bit_1 = (value & 2) >> 1;
+	var bit_2 = (value & 4) >> 2;
+
+	console.log(value + " = " + bit_0 + " " + bit_1 + " " + bit_2);
 
 	wpi.digitalWrite(RED_PIN, bit_0);
 	wpi.digitalWrite(GREEN_PIN, bit_1);
