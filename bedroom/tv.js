@@ -21,7 +21,6 @@ lcd.on('ready', function() {
 			lcd.print(channels[n_channel], function(err) {
 				if (err) throw err;
 			});
-			n_channel = (n_channel + 1) % 5;
 		});
 
 	}, 1000);
