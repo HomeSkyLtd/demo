@@ -7,7 +7,7 @@
             "unit": "",
             "commandCategory": "fan",
             "output": {
-                "gpio": 14,
+                "gpio": 23,
                 "invert": 1,
                 "initial": 1
             }
@@ -16,7 +16,7 @@
     "networkInterface": {
         "type": "tcp",
         "params": {
-            "rport": 2357,
+            "rport": 2360,
             "broadcast_port": 2356
         }
     }
