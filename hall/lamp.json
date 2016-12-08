@@ -16,7 +16,7 @@
     "networkInterface": {
         "type": "tcp",
         "params": {
-            "rport": 2357,
+            "rport": 2361,
             "broadcast_port": 2356
         }
     }
