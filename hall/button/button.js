@@ -45,8 +45,12 @@ Driver.createDriver({}, function(err, driver) {
                     wpi.wiringPiISR(6, wpi.INT_EDGE_RISING, function(delta) {
                         setTimeout(debounceCallback(6,1), 100);
                     });
-                    console.log("[initialized] Switch button initialized");
 
+                    leaf.sendData({id: 1 , value: state}, function (err) {
+                        if (err) console.log(err);
+                        else console.log(`[data sent] State: ${state}`);
+                        console.log("[initialized] Switch button initialized");
+                    });
                 }
             });
     }

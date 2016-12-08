@@ -9,7 +9,7 @@
             "output": {
                 "gpio": 14,
                 "invert": 1,
-                "initial": 1
+                "initial": 0
             }
         }
     ],
