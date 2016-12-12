@@ -42,7 +42,7 @@ Driver.createDriver({}, function(err, driver) {
                                 function (err) {
                                     if (err) console.log(err);
                                     else console.log("[DATA SENT] Sent reading successfuly");
-                                    setTimeout(read, 1000);
+                                    setTimeout(read, 3000);
                             });
                         });
                     };
