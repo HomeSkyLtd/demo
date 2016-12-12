@@ -34,14 +34,12 @@ Driver.createDriver({}, function(err, driver) {
                         leaf.sendData({id: 1 , value: 1}, function (err) {
                             if (err) console.log(err);
                             else console.log(`[data sent] State: ${state}`);
-                            console.log("[initialized] Presence sensor initialized");
                         });
                     });
                     wpi.wiringPiISR(17, wpi.INT_EDGE_FALLING, function(delta) {
                         leaf.sendData({id: 1 , value: 0}, function (err) {
                             if (err) console.log(err);
                             else console.log(`[data sent] State: ${state}`);
-                            console.log("[initialized] Presence sensor initialized");
                         });
                     });
 
