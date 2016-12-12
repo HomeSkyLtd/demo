@@ -2,7 +2,7 @@
 
 const Leaf = require("rainfall-leaf");
 const Driver = require("rainfall-tcp");
-const LIGHT_sensor = require('bh1750');
+const BH1750 = require('bh1750');
 
 var light = new BH1750({
     address: 0x23,
