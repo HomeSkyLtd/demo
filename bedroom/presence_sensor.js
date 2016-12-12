@@ -30,30 +30,23 @@ Driver.createDriver({}, function(err, driver) {
                     wpi.setup('gpio');
                     wpi.pinMode(17, wpi.INPUT);
                     wpi.pullUpDnControl(17, wpi.PUD_DOWN);
+                    
+                    var read = () => {
+                        var state = wpi.digitalRead(17);
+                        leaf.sendData([{id: 1 , value: state }], function (err) {
+                            if (err) console.log(err);
+                            else console.log('[data sent] State: ' + state);
+                            setTimeout(read, 3000);
+                        });
+                    };
                     var state = wpi.digitalRead(17);
-                    wpi.wiringPiISR(17, wpi.INT_EDGE_RISING, function(delta) {
-                        if (state === 1)
-                            return;
-                        state = 1;
-                        leaf.sendData([{ id: 1 , value: state }], function (err) {
-                            if (err) console.log(err);
-                            else console.log('[data sent] State: ' + state);
-                        });
-                    });
-                    wpi.wiringPiISR(17, wpi.INT_EDGE_FALLING, function(delta) {
-                        if (state === 0)
-                            return;
-                        state = 0;
-                        leaf.sendData([{ id: 1 , value: state }], function (err) {
-                            if (err) console.log(err);
-                            else console.log('[data sent] State: ' + state);
-                        });
-                    });
                     leaf.sendData([{id: 1 , value: state }], function (err) {
                         if (err) console.log(err);
                         else console.log('[data sent] State: ' + state);
-                        console.log("[initialized] Presence sensor initialized");
+                        read();
+                        console.log("[Initialized] presence sensor initialized");
                     });
+
                 }
             });
     }
