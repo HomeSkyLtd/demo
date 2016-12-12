@@ -1,0 +1,57 @@
+{
+  "name": "demo-bedroom",
+  "version": "1.0.0",
+  "description": "Sensor/Actuator implementation using a raspberry pi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HomeSkyLtd/raspberry.git"
+  },
+  "keywords": [
+    "rainfall",
+    "raspberry",
+    "sensor",
+    "actuator",
+    "home",
+    "presence",
+    "light",
+    "luminance",
+    "led",
+    "lamp",
+    "automation",
+    "protocol",
+    "example"
+  ],
+  "contributors": [
+    {
+      "name": "Ricardo Boccoli Gallego",
+      "email": "ricardo.gallego93@gmail.com"
+    },
+    {
+      "name": "Henrique Rodrigues",
+      "email": "henriqrodrigues@gmail.com"
+    },
+    {
+      "name": "Fabio Tsuyoshi Muramatsu",
+      "email": "ftmtsuyoshi@gmail.com"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HomeSkyLtd/raspberry/issues"
+  },
+  "dependencies": {
+    "lcd": "^1.1.4",
+    "lcdi2c": "^1.0.6",
+    "bh1750": "*",
+    "rainfall-leaf": "*",
+    "rainfall-tcp": "*",
+    "rainfall-udp": "*",
+    "rainfall-xbee-s1": "*",
+    "wiring-pi": "*"
+  },
+  "homepage": "https://github.com/HomeSkyLtd/raspberry#readme"
+}
