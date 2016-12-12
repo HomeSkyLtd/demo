@@ -43,7 +43,7 @@ Driver.createDriver({}, function(err, driver) {
                         });
                     });
 
-                    leaf.sendData({id: 1 , value: wpi.digitalRead(pin)}, function (err) {
+                    leaf.sendData({id: 1 , value: wpi.digitalRead(17)}, function (err) {
                         if (err) console.log(err);
                         else console.log(`[data sent] State: ${state}`);
                         console.log("[initialized] Presence sensor initialized");
