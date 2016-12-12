@@ -32,6 +32,8 @@ Driver.createDriver({}, function(err, driver) {
                     wpi.pullUpDnControl(17, wpi.PUD_DOWN);
                     var state = wpi.digitalRead(17);
                     wpi.wiringPiISR(17, wpi.INT_EDGE_RISING, function(delta) {
+                        if (state === 1)
+                            return;
                         state = 1;
                         leaf.sendData([{ id: 1 , value: state }], function (err) {
                             if (err) console.log(err);
@@ -39,6 +41,8 @@ Driver.createDriver({}, function(err, driver) {
                         });
                     });
                     wpi.wiringPiISR(17, wpi.INT_EDGE_FALLING, function(delta) {
+                        if (state === 0)
+                            return;
                         state = 0;
                         leaf.sendData([{ id: 1 , value: state }], function (err) {
                             if (err) console.log(err);
