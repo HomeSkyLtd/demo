@@ -29,6 +29,17 @@ To run the code, use the following command:
 sudo node light_sensor.js
 ```
 
+### Presence sensor
+The presence sensor is actually a PIR sensor and it senses motion.
+The figure below shows the wiring diagram for the bedroom's presence sensor.
+
+![alt text](https://github.com/HomeSkyLtd/demo/blob/master/bedroom/images/presence_sensor.png "Schematics for bedroom's presence sensor")
+
+To run the code, use the following command:
+``` bash
+sudo node presence_sensor.js
+```
+
 
 ### Info about devices used in this tutorial
 * The luminance sensor's model is Gy-30/Bh1750fvi. You can find them easily on [Mercado Livre](http://produto.mercadolivre.com.br/MLB-707047987-gy-30-modulo-sensor-de-luminosidade-digital-otico-bh1750fvi-_JM).
