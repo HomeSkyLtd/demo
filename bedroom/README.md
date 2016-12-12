@@ -11,7 +11,7 @@ First of all, make sure you have Node.js and NPM installed. Install the dependen
 The pinout used on the diagrams are for the Raspberry Pi B+. It should be equivalent for the Pi 2 and Pi 3.
 
 ### Lamp
-The figure below shows the wiring diagram for the hall's lamp.
+The figure below shows the wiring diagram for the bedroom's lamp.
 ![alt text](https://github.com/HomeSkyLtd/demo/blob/master/bedroom/images/lamp.png "Schematics for bedroom's lamp")
 
 To run the code, use the following command:
@@ -22,7 +22,7 @@ sudo node nodepi lamp.json
 ### Luminance sensor
 The figure below shows the wiring diagram for the bedroom's luminance sensor.
 
-![alt text](https://github.com/HomeSkyLtd/demo/blob/master/hall/images/light_sensor_i2c.png "Schematics for bedroom's luminance sensor")
+![alt text](https://github.com/HomeSkyLtd/demo/blob/master/bedroom/images/light_sensor_i2c.png "Schematics for bedroom's luminance sensor")
 
 To run the code, use the following command:
 ``` bash
