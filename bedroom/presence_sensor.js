@@ -31,19 +31,19 @@ Driver.createDriver({}, function(err, driver) {
                     wpi.pullUpDnControl(17, wpi.PUD_DOWN);
                     var state =  
                     wpi.wiringPiISR(17, wpi.INT_EDGE_RISING, function(delta) {
-                        leaf.sendData({id: 1 , value: 1}, function (err) {
+                        leaf.sendData([{id: 1 , value: 1}], function (err) {
                             if (err) console.log(err);
                             else console.log(`[data sent] State: ${state}`);
                         });
                     });
                     wpi.wiringPiISR(17, wpi.INT_EDGE_FALLING, function(delta) {
-                        leaf.sendData({id: 1 , value: 0}, function (err) {
+                        leaf.sendData([{id: 1 , value: 0}], function (err) {
                             if (err) console.log(err);
                             else console.log(`[data sent] State: ${state}`);
                         });
                     });
 
-                    leaf.sendData({id: 1 , value: wpi.digitalRead(17)}, function (err) {
+                    leaf.sendData([{id: 1 , value: wpi.digitalRead(17)}], function (err) {
                         if (err) console.log(err);
                         else console.log(`[data sent] State: ${state}`);
                         console.log("[initialized] Presence sensor initialized");
