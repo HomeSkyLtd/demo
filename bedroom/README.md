@@ -18,3 +18,17 @@ To run the code, use the following command:
 ``` bash
 sudo node nodepi lamp.json
 ```
+
+### Luminance sensor
+The figure below shows the wiring diagram for the bedroom's luminance sensor.
+
+![alt text](https://github.com/HomeSkyLtd/demo/blob/master/hall/images/light_sensor_i2c.png "Schematics for bedroom's luminance sensor")
+
+To run the code, use the following command:
+``` bash
+sudo node light_sensor.js
+```
+
+
+### Info about devices used in this tutorial
+* The luminance sensor's model is Gy-30/Bh1750fvi. You can find them easily on [Mercado Livre](http://produto.mercadolivre.com.br/MLB-707047987-gy-30-modulo-sensor-de-luminosidade-digital-otico-bh1750fvi-_JM).
