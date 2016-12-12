@@ -20,7 +20,7 @@ Driver.createDriver({}, function(err, driver) {
                 dataType: [
                     {
                         id: 1,
-                        type: "real",
+                        type: "int",
                         range: [0,65535],
                         measureStrategy: "periodic",
                         dataCategory: "luminance",
@@ -36,26 +36,15 @@ Driver.createDriver({}, function(err, driver) {
                 }
                 else {
                     var read = function() {
-                        DHT_sensor.read(22, 5, function(err, temperature, humidity) {
-                            if (err) {
-                                console.log(err);
-                                setTimeout(read, 3000);
-                            }
-                            else {
-                                console.log('temp: ' + temperature.toFixed(1) + '°C, ' +
-                                    'humidity: ' + humidity.toFixed(1) + '%');
-                                leaf.sendData(
-                                    [
-                                        {id: 1, value: temperature.toFixed(1)},
-                                        {id: 2, value: humidity.toFixed(1)}
-                                    ], function (err) {
+                        light.readLight(function(luminance) {
+                            console.log('luminance: ' + luminance + 'lx');
+                            leaf.sendData([ {id: 1, value: luminance }], 
+                                function (err) {
                                     if (err) console.log(err);
                                     else console.log("[DATA SENT] Sent reading successfuly");
-                                    setTimeout(read, 3000);
-                                });
-                            }
+                                    setTimeout(read, 1000);
+                            });
                         });
-                        
                     };
                     console.log("[Initialized] light sensor initialized");
                     read();
