@@ -2,15 +2,19 @@
 
 const Leaf = require("rainfall-leaf");
 const Driver = require("rainfall-tcp");
-const raspi = require('raspi');
-const PWM = require('raspi-pwm').PWM;
-var pwm = new PWM();
 
-var duty_cycle = 40;
+var wpi = require('wiring-pi');
+wpi.setup('gpio');
 
-raspi.init(function() {
-  pwm.write(duty_cycle); // Center a servo
-});
+const OUT_PIN = 26;
+wpi.pinMode(OUT_PIN, wpi.OUTPUT);
+
+var value = 0;
+var duty = [9, 21];
+wpi.softPwmCreate(OUT_PIN, duty[value], 100);
+setTimeout(function() {
+	wpi.softPwmStop(OUT_PIN);
+}, 1000);
 
 Driver.createDriver({}, function(err, driver) {
 		if (err) throw err;
@@ -24,7 +28,7 @@ Driver.createDriver({}, function(err, driver) {
 						type: "bool",
 						range:[0, 1],
 						unit: "",
-						commandCategory: "custom"
+						commandCategory: "toggle"
 					}],
 					path: false
 				},
@@ -47,8 +51,12 @@ Driver.createDriver({}, function(err, driver) {
 		}
 	});
 
-var onCommand = function(value) {
-	if (duty_cycle == 40) duty_cycle = 90;
-	else duty_cycle = 40;
-	pwm.write(value);
+var onCommand = function() {
+	console.log('Called: ' + value);
+
+	value = (value + 1) % 2;
+	wpi.softPwmCreate(OUT_PIN, duty[value], 100);
+	setTimeout(function() {
+		wpi.softPwmStop(OUT_PIN);
+	}, 1000);
 }
