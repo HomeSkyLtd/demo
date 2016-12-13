@@ -95,15 +95,16 @@ fs.readFile(filename, 'utf8', (err, data) => {
                 path: false
             }, (err, leaf) => {
                 if (err) {
-                    driver.close();
-                    throw err;
+                    console.log(err);
                 }
-                onStart(leaf, { 
-                    dataType: config.dataType && 
-                        config.dataType.reduce(reduceToObjFunction, {}),
-                    commandType: config.commandType &&
-                        config.commandType.reduce(reduceToObjFunction, {})
-                });
+                else {
+                    onStart(leaf, { 
+                        dataType: config.dataType && 
+                            config.dataType.reduce(reduceToObjFunction, {}),
+                        commandType: config.commandType &&
+                            config.commandType.reduce(reduceToObjFunction, {})
+                    });
+                }
             });
     });
 });

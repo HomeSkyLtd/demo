@@ -95,8 +95,7 @@ fs.readFile(filename, 'utf8', (err, data) => {
                 path: false
             }, (err, leaf) => {
                 if (err) {
-                    driver.close();
-                    throw err;
+                    console.log(err);
                 }
                 onStart(leaf, { 
                     dataType: config.dataType && 

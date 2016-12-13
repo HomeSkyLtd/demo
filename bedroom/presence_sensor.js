@@ -27,24 +27,31 @@ Driver.createDriver({}, function(err, driver) {
             (err, leaf) => {
                 if (err) console.log(err);
                 else {
+                    var state;
                     wpi.setup('gpio');
-                    wpi.pinMode(17, wpi.INPUT);
-                    wpi.pullUpDnControl(17, wpi.PUD_DOWN);
+                    wpi.pinMode(22, wpi.INPUT);
+                    wpi.pullUpDnControl(22, wpi.PUD_DOWN);
                     
+
                     var read = () => {
-                        var state = wpi.digitalRead(17);
-                        leaf.sendData([{id: 1 , value: state }], function (err) {
-                            if (err) console.log(err);
-                            else console.log('[data sent] State: ' + state);
-                            setTimeout(read, 3000);
-                        });
+                        var newRead = wpi.digitalRead(22);
+                        if (newRead != state) {
+                                state = newRead;
+                                leaf.sendData([{id: 1 , value: state }], function (err) {
+                                if (err) console.log(err);
+                                else console.log('[data sent] State: ' + state);
+                                setTimeout(read, 100);
+                            });
+                        }
+                        else
+                            setTimeout(read, 100);
                     };
-                    var state = wpi.digitalRead(17);
+
+                    state = wpi.digitalRead(22);
                     leaf.sendData([{id: 1 , value: state }], function (err) {
                         if (err) console.log(err);
                         else console.log('[data sent] State: ' + state);
                         read();
-                        console.log("[Initialized] presence sensor initialized");
                     });
 
                 }
