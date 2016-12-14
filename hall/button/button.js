@@ -21,7 +21,8 @@ Driver.createDriver({}, function(err, driver) {
                         unit: ""
                     }
                 ],
-                commandType: []
+                commandType: [],
+                path: false
             },
             (err, leaf) => {
                 if (err) console.log(err);

@@ -28,7 +28,7 @@ Driver.createDriver({}, function(err, driver) {
                 if (err) console.log(err);
                 else {
                     wpi.setup('gpio');
-                    wpi.pinMode(2, wpi.INPUT);
+                    wpi.pinMode(22, wpi.INPUT);
                     wpi.pullUpDnControl(22, wpi.PUD_DOWN);
                     
                     wpi.wiringPiISR(22, wpi.INT_EDGE_RISING, function(delta) {
