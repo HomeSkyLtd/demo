@@ -2,14 +2,15 @@
 
 const Leaf = require("rainfall-leaf");
 const Driver = require("rainfall-tcp");
-const raspi = require('raspi-llio');
+const raspi = require('raspi');
+const PWM = require('raspi-pwm').PWM;
+var pwm = new PWM();
 
-var pwm = new raspi.PWM();
-raspi.PWM.setMode(0);
-raspi.PWM.setClockDivisor(400);
-raspi.PWM.setRange(1000);
+var duty_cycle = 40;
 
-var door_value = 40;
+raspi.init(function() {
+  pwm.write(duty_cycle); // Center a servo
+});
 
 Driver.createDriver({}, function(err, driver) {
 		if (err) throw err;
@@ -47,7 +48,7 @@ Driver.createDriver({}, function(err, driver) {
 	});
 
 var onCommand = function(value) {
-	if (value == 40) value = 90;
-	else value = 40;
+	if (duty_cycle == 40) duty_cycle = 90;
+	else duty_cycle = 40;
 	pwm.write(value);
 }
