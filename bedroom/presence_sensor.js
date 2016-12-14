@@ -27,28 +27,31 @@ Driver.createDriver({}, function(err, driver) {
             (err, leaf) => {
                 if (err) console.log(err);
                 else {
+                    var state;
                     wpi.setup('gpio');
                     wpi.pinMode(22, wpi.INPUT);
                     wpi.pullUpDnControl(22, wpi.PUD_DOWN);
                     
-                    wpi.wiringPiISR(22, wpi.INT_EDGE_RISING, function(delta) {
-                        leaf.sendData([{id: 1 , value: 1 }], function (err) {
-                            if (err) console.log(err);
-                            else console.log('[data sent] State: ' + 1);
-                        });
-                    });
 
-                    wpi.wiringPiISR(22, wpi.INT_EDGE_FALLING, function(delta) {
-                        leaf.sendData([{id: 1 , value: 0 }], function (err) {
-                            if (err) console.log(err);
-                            else console.log('[data sent] State: ' + 0);
-                        });
-                    });
+                    var read = () => {
+                        var newRead = wpi.digitalRead(22);
+                        if (newRead != state) {
+                                state = newRead;
+                                leaf.sendData([{id: 1 , value: state }], function (err) {
+                                if (err) console.log(err);
+                                else console.log('[data sent] State: ' + state);
+                                setTimeout(read, 1000);
+                            });
+                        }
+                        else
+                            setTimeout(read, 1000);
+                    };
 
-                    var state = wpi.digitalRead(22);
+                    state = wpi.digitalRead(22);
                     leaf.sendData([{id: 1 , value: state }], function (err) {
                         if (err) console.log(err);
                         else console.log('[data sent] State: ' + state);
+                        read();
                     });
 
                 }
