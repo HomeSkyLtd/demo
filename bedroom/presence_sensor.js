@@ -40,11 +40,11 @@ Driver.createDriver({}, function(err, driver) {
                                 leaf.sendData([{id: 1 , value: state }], function (err) {
                                 if (err) console.log(err);
                                 else console.log('[data sent] State: ' + state);
-                                setTimeout(read, 1000);
+                                setTimeout(read, 100);
                             });
                         }
                         else
-                            setTimeout(read, 1000);
+                            setTimeout(read, 100);
                     };
 
                     state = wpi.digitalRead(22);
